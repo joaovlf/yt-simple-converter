@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🎥 YouTube to MP4 Downloader com Next.js
 
-## Getting Started
+Este é um projeto simples que permite baixar vídeos do YouTube em formato MP4 diretamente do navegador, utilizando o framework Next.js no backend e a biblioteca youtube-dl-exec para manipulação dos downloads.
+🚀 Funcionalidades
 
-First, run the development server:
+    ✅ Conversão de vídeos do YouTube para MP4
 
-```bash
+    ✅ Backend com API em Next.js (App Router)
+
+    ✅ Download direto do navegador
+
+    ✅ Tratamento de erros básicos
+
+📦 Tecnologias Utilizadas
+
+    Next.js
+
+    TypeScript
+
+    youtube-dl-exec
+
+    Node.js
+
+🛠️ Instalação
+
+    Clone o repositório:
+
+git clone https://github.com/seu-usuario/yt-simple-converter.git
+cd super-yt-converter
+
+    Instale as dependências:
+
+npm install
+
+    Execute o servidor de desenvolvimento:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🧠 Como funciona
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    O usuário insere a URL de um vídeo do YouTube no frontend.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    A URL é enviada para uma API /api/download criada com o Next.js App Router.
 
-## Learn More
+    O backend chama o youtube-dl-exec e inicia o download do vídeo como um stream.
 
-To learn more about Next.js, take a look at the following resources:
+    O vídeo é enviado de volta para o cliente, que inicia automaticamente o download no navegador.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📁 Estrutura do Projeto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+.
+├── app/
+│ ├── page.tsx # Interface do usuário
+│ └── api/
+│ └── download/
+│ └── route.ts # API de download
+├── functions/
+│ └── getYoutubeVideoDownload.ts # Função que executa o youtube-dl
+├── public/
+├── styles/
+├── package.json
+└── tsconfig.json
 
-## Deploy on Vercel
+⚠️ Aviso Legal
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Este projeto é apenas para fins educacionais. Baixar conteúdo do YouTube pode violar os termos de serviço da plataforma. Use com responsabilidade e apenas com vídeos que você tem permissão legal para baixar.
+🧑‍💻 Autor
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Se curtir o projeto, não esquece de deixar uma ⭐ no repositório!
