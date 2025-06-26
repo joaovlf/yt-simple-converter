@@ -5,6 +5,8 @@ export class downloadYoutubeVideoController {
 
   StreamVideoDownload(url?: string) {
     const downloader = new DownloadYoutubeVideoService();
-    if (url) downloader.StreamVideoDownload(url);
+    if (url) {
+      downloader.StreamVideoDownload(url);
+    }
   }
 }
