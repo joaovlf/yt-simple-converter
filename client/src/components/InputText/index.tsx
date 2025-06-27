@@ -7,7 +7,7 @@ export const InputText: FC<Props> = (props) => {
       {...props}
       name={props.name}
       placeholder="paste your url here to convert"
-      className="border-1 bg-amber-50 border-amber-500 rounded-md w-full p-4 outline-0 text-gray-700 placeholder:text-gray-500 text-xs placeholder:font-light"
+      className="border-1 bg-transparent border-amber-500 rounded-md w-full p-4 outline-0 text-amber-300 placeholder:text-amber-500 text-xs placeholder:font-light"
       type="text"
     />
   );
