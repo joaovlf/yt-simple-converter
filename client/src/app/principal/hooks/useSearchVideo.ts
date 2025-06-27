@@ -35,5 +35,9 @@ export const UseFechVideo = () => {
     if (response) setDisableButton(false);
   };
 
-  return { disableButton, handleSearchVideo };
+  const handleDownloadVideo = () => {
+    window.location.href = "http://localhost:8080/api/video";
+  };
+
+  return { disableButton, handleSearchVideo, handleDownloadVideo };
 };
