@@ -24,6 +24,7 @@ export const getYoutubeVideoDownload = (url?: string) => {
         subprocess.on("exit", (code) => {
           if (code === 0) {
             console.log("✅ Download concluído!");
+
             resolve();
             return { message: "Download Concluído!" };
           } else {
