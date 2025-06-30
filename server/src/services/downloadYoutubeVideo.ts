@@ -24,9 +24,7 @@ export const getYoutubeVideoDownload = (url?: string) => {
         subprocess.on("exit", (code) => {
           if (code === 0) {
             console.log("✅ Download concluído!");
-
             resolve();
-            return { message: "Download Concluído!" };
           } else {
             console.error("❌ yt-dlp saiu com código:", code);
             reject(new Error("yt-dlp exited with code " + code));

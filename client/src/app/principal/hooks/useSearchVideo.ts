@@ -7,6 +7,11 @@ export const UseFechVideo = () => {
 
   const [disableButton, setDisableButton] = useState(false);
 
+  const [videoData, setVideoData] = useState<{
+    thumb: string;
+    title: string;
+  }>();
+
   useEffect(() => {
     if (conversionStatus === "LOADING") {
       setDisableButton(true);
@@ -30,14 +35,29 @@ export const UseFechVideo = () => {
     if (!url) return;
 
     const response = await fetch(
-      "http://localhost:8080/api?url=" + url.toString()
-    );
-    if (response) setDisableButton(false);
+      "http://localhost:8080/api/getVideoInfo?url=" + url.toString()
+    ).then(async (res) => {
+      return await res.json();
+    });
+    if (response) {
+      setDisableButton(false);
+      console.log(response);
+      setVideoData(response.data);
+    }
   };
 
   const handleDownloadVideo = () => {
     window.location.href = "http://localhost:8080/api/video";
   };
+  const handleClearVideoData = () => {
+    setVideoData(undefined);
+  };
 
-  return { disableButton, handleSearchVideo, handleDownloadVideo };
+  return {
+    disableButton,
+    handleSearchVideo,
+    handleDownloadVideo,
+    handleClearVideoData,
+    videoData,
+  };
 };

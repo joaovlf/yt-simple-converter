@@ -1,41 +1,90 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { UseFechVideo } from "@/app/principal/hooks/useSearchVideo";
 import { InputText } from "../InputText";
-import { BiDownload } from "react-icons/bi";
 import { FiRefreshCcw } from "react-icons/fi";
+import Image from "next/image";
+import { BiDownload, BiTrash } from "react-icons/bi";
 
 export function ConvertVideoForm() {
-  const { handleSearchVideo, disableButton, handleDownloadVideo } =
+  const { handleSearchVideo, disableButton, videoData, handleClearVideoData } =
     UseFechVideo();
   return (
-    <form onSubmit={handleSearchVideo} className="w-full flex flex-col gap-1.5">
-      {/* TODO MOUNT FILE ON FRONT END TO USER DOWNLOAD DIRECTLY WITH LINK COMPONENT */}
-      <InputText name="url" />
-      <div className="flex gap-1.5">
-        <button
-          onClick={handleDownloadVideo}
-          type="button"
-          className="justify-center flex items-center gap-1.5 shadow-2xl h-10 rounded-lg px-24  bg-amber-500 text-white font-bold hover:bg-amber-700 hover:text-gray-300 transition-all cursor-pointer"
-        >
-          <p>Download</p>
-          <BiDownload size={24} />
-        </button>
-
-        <button
-          disabled={disableButton}
-          type="submit"
-          className="disabled:bg-red-500 disabled:cursor-not-allowed justify-center shadow-2xl h-10 rounded-lg px-24  bg-emerald-500 text-white font-bold hover:bg-emerald-600 hover:text-gray-300 transition-all cursor-pointer"
-        >
-          {disableButton ? (
-            "Converting..."
-          ) : (
-            <div className="flex items-center gap-1.5">
-              Convert
-              <FiRefreshCcw size={16} />
+    <div className="w-3/5 h-full flex flex-col gap-3.5 max-w-7xl">
+      {videoData?.thumb && (
+        <div className="w-full flex flex-col gap-3.5 items-center ">
+          <div className="flex items-center justify-center w-full">
+            {/* video data */}
+            <div className="flex flex-col items-center justify-center w-fit gap-3.5 p-2.5">
+              <Image
+                width={450}
+                height={350}
+                className="w-full"
+                src={videoData?.thumb}
+                alt=""
+              />
+              <p className="font-bold ">{videoData?.title}</p>
             </div>
-          )}
-        </button>
-      </div>
-    </form>
+            {/* table */}
+            <div className="flex flex-col items-center justify-start w-full h-full p-2.5">
+              <div className=" flex w-full text-center">
+                <div className="w-full p-2.5 border border-amber-400">
+                  Video
+                </div>
+                <div className="w-full p-2.5 border border-amber-400">
+                  Audio
+                </div>
+              </div>
+              <div className=" flex w-full border border-amber-400">
+                <div className="w-full p-2.5">Format</div>
+                <div className="w-full p-2.5 text-end">Action</div>
+              </div>
+              <div className=" w-full text-center items-center border border-amber-400 p-2.5 flex justify-between">
+                <p>420p</p>
+                <button className="p-1.5 bg-emerald-400 rounded-lg flex items-center gap-3.5 font-bold">
+                  <BiDownload size={25} />
+                </button>
+              </div>
+              <div className=" w-full text-center items-center border border-amber-400 p-2.5 flex justify-between">
+                <p>720p</p>
+                <button className="p-1.5 bg-emerald-400 rounded-lg flex items-center gap-3.5 font-bold">
+                  <BiDownload size={25} />
+                </button>
+              </div>
+              <div className=" w-full text-center items-center border border-amber-400 p-2.5 flex justify-between">
+                <p>1080p</p>
+                <button className="p-1.5 bg-emerald-400 rounded-lg flex items-center gap-3.5 font-bold">
+                  <BiDownload size={25} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* TODO MOUNT FILE ON FRONT END TO USER DOWNLOAD DIRECTLY WITH LINK COMPONENT */}
+
+      <form
+        onSubmit={handleSearchVideo}
+        className="w-full flex flex-col gap-1.5"
+      >
+        <InputText name="url" />
+        <div className="flex gap-1.5">
+          <button
+            disabled={disableButton}
+            type="submit"
+            className="disabled:bg-red-500 disabled:cursor-not-allowed justify-center shadow-2xl h-10 rounded-lg px-24  bg-emerald-500 text-white font-bold hover:bg-emerald-600 hover:text-gray-300 transition-all cursor-pointer"
+          >
+            {disableButton ? (
+              "Converting..."
+            ) : (
+              <div className="flex items-center gap-1.5">
+                Convert
+                <FiRefreshCcw size={16} />
+              </div>
+            )}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
