@@ -1,4 +1,4 @@
-import { ConvertVideoForm } from "@/components/buttons/ConvertVideoButton";
+import { ConvertVideoContent } from "@/components/convertVideoContent";
 import { BiLeaf } from "react-icons/bi";
 // import { UseSerchYtVideo } from "@/hooks/useSearchYtVideo";
 
@@ -16,7 +16,7 @@ export default function Page() {
               free <BiLeaf />
             </span>
           </p>
-          <ConvertVideoForm />
+          <ConvertVideoContent />
         </div>
         {/* TODO MONTAR O ARQUIVO COM METODO DE STREAM 
         QUE JA ESTÁ PRONTO ANTES DE DISPONIVILIZAR O DOWNLOAD */}
